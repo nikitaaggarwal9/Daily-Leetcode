@@ -1,13 +1,12 @@
 class Solution {
     public int maxProfit(int[] prices) {
-        int maxProf = 0;
-        int maxOnRight = prices[prices.length - 1];
+        int maxPriceInFuture = prices[prices.length - 1], maxProfit = 0;
+         
         for(int i = prices.length - 2; i >= 0; i--) {
-            maxOnRight = Math.max(prices[i], maxOnRight);
-            int prof = maxOnRight - prices[i];
-            maxProf = Math.max(prof, maxProf);
+            maxProfit = Math.max(maxProfit, maxPriceInFuture - prices[i]);
+            maxPriceInFuture = Math.max(maxPriceInFuture, prices[i]);
         }
-
-        return maxProf;
+        
+        return maxProfit;
     }
 }
